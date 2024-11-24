@@ -1,7 +1,7 @@
 package co.com.bancolombia.config;
 
 import co.com.bancolombia.model.budget.gateways.BudgetGateway;
-import co.com.bancolombia.model.expense.gateways.ExpenseGateway;
+import co.com.bancolombia.model.transaction.gateways.TransactionGateway;
 import co.com.bancolombia.usecase.budget.BudgetUseCase;
 import co.com.bancolombia.usecase.expense.ExpenseUseCase;
 import org.springframework.context.annotation.Bean;
@@ -18,12 +18,12 @@ import org.springframework.context.annotation.FilterType;
 public class UseCasesConfig {
 
     @Bean
-    public ExpenseUseCase expenseUseCase(ExpenseGateway expenseGateway) {
-        return new ExpenseUseCase(expenseGateway);
+    public ExpenseUseCase expenseUseCase(TransactionGateway transactionGateway) {
+        return new ExpenseUseCase(transactionGateway);
     }
 
     @Bean
-    public BudgetUseCase budgetUseCase(BudgetGateway budgetGateway) {
-        return new BudgetUseCase(budgetGateway);
+    public BudgetUseCase budgetUseCase(BudgetGateway budgetGateway, ExpenseUseCase expenseUseCase) {
+        return new BudgetUseCase(budgetGateway, expenseUseCase);
     }
 }

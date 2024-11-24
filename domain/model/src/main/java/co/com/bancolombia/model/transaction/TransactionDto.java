@@ -1,4 +1,4 @@
-package co.com.bancolombia.model.expense;
+package co.com.bancolombia.model.transaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @ToString
-public class ExpenseDto {
+public class TransactionDto {
 
     private Long id;
     private String title;

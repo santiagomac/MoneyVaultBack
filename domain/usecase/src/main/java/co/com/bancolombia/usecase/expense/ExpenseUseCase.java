@@ -1,7 +1,7 @@
 package co.com.bancolombia.usecase.expense;
 
-import co.com.bancolombia.model.expense.ExpenseDto;
-import co.com.bancolombia.model.expense.gateways.ExpenseGateway;
+import co.com.bancolombia.model.transaction.TransactionDto;
+import co.com.bancolombia.model.transaction.gateways.TransactionGateway;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -9,26 +9,30 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class ExpenseUseCase {
 
-    private final ExpenseGateway expenseGateway;
+    private final TransactionGateway transactionGateway;
 
-    public Mono<ExpenseDto> createExpense(ExpenseDto expenseDto) {
-        return this.expenseGateway.create(expenseDto);
+    public Mono<TransactionDto> createExpense(TransactionDto transactionDto) {
+        return this.transactionGateway.create(transactionDto);
     }
 
-    public Flux<ExpenseDto> getAllExpenses() {
-        return expenseGateway.getAllExpenses();
+    public Flux<TransactionDto> getAllExpenses() {
+        return transactionGateway.getAllExpenses();
     }
 
-    public Mono<ExpenseDto> getExpense(Long id) {
-        return this.expenseGateway.getById(id);
+    public Flux<TransactionDto> getExpensesByBudgetId(Long budgetId) {
+        return this.transactionGateway.getExpensesByBudgetId(budgetId);
     }
 
-    public Mono<Void> updateExpense(Long id, ExpenseDto expenseDto) {
-        expenseDto.setId(id);
-        return this.expenseGateway.update(expenseDto);
+    public Mono<TransactionDto> getExpense(Long id) {
+        return this.transactionGateway.getById(id);
+    }
+
+    public Mono<Void> updateExpense(Long id, TransactionDto transactionDto) {
+        transactionDto.setId(id);
+        return this.transactionGateway.update(transactionDto);
     }
 
     public Mono<Void> deleteExpense(Long id) {
-        return this.expenseGateway.delete(id);
+        return this.transactionGateway.delete(id);
     }
 }

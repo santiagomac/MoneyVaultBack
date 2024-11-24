@@ -2,6 +2,7 @@ package co.com.bancolombia.r2dbc.helper;
 
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
@@ -56,7 +57,7 @@ public abstract class ReactiveAdapterOperations<E, D, I, R extends ReactiveCrudR
     }
 
     public Flux<E> findByExample(E entity) {
-        return repository.findAll(Example.of(toData(entity)))
+        return repository.findAll(Example.of(toData(entity), ExampleMatcher.matching().withIgnoreNullValues()))
                 .map(this::toEntity);
     }
 

@@ -29,4 +29,5 @@ public class ExpenseEntity {
     private String category;
     private LocalDateTime date;
     private Long budgetId;
+    private String movementType;
 }

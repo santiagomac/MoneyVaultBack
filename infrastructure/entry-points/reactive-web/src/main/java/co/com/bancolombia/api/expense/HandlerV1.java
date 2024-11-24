@@ -1,6 +1,6 @@
 package co.com.bancolombia.api.expense;
 
-import co.com.bancolombia.model.expense.ExpenseDto;
+import co.com.bancolombia.model.transaction.TransactionDto;
 import co.com.bancolombia.usecase.expense.ExpenseUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,14 +18,14 @@ public class HandlerV1 {
 //private  final UseCase2 useCase2;
 
     public Mono<ServerResponse> createExpense(ServerRequest serverRequest) {
-        return serverRequest.bodyToMono(ExpenseDto.class)
+        return serverRequest.bodyToMono(TransactionDto.class)
                 .flatMap(this.expenseUseCase::createExpense)
                 .flatMap(expense -> ServerResponse.ok().bodyValue(expense))
                 .onErrorResume(ex -> ServerResponse.badRequest().bodyValue(ex.getMessage()));
     }
 
     public Mono<ServerResponse> getExpenses(ServerRequest serverRequest) {
-        return ServerResponse.ok().body(this.expenseUseCase.getAllExpenses(), ExpenseDto.class);
+        return ServerResponse.ok().body(this.expenseUseCase.getAllExpenses(), TransactionDto.class);
     }
 
     public Mono<ServerResponse> getExpense(ServerRequest serverRequest) {
@@ -42,7 +42,7 @@ public class HandlerV1 {
     public Mono<ServerResponse> updateExpense(ServerRequest serverRequest) {
         // useCase.logic();
         Long id = Long.parseLong(serverRequest.pathVariable("id"));
-        return serverRequest.bodyToMono(ExpenseDto.class)
+        return serverRequest.bodyToMono(TransactionDto.class)
                 .flatMap(expense -> expenseUseCase.updateExpense(id, expense))
                 .then(Mono.defer(() -> ServerResponse.noContent().build()))
                 .onErrorResume(ex -> ServerResponse.badRequest().bodyValue(ex.getMessage()));
