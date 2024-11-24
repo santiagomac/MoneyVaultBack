@@ -45,4 +45,9 @@ implements ExpenseGateway
     public Mono<Void> delete(Long id) {
         return this.repository.deleteById(id);
     }
+
+    @Override
+    public Flux<ExpenseDto> getExpensesByBudgetId(Long id) {
+        return this.repository.findByBudgetId(id);
+    }
 }

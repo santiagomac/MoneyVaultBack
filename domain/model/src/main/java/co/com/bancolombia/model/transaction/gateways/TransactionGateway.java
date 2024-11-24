@@ -11,4 +11,5 @@ public interface ExpenseGateway {
     Flux<ExpenseDto> getAllExpenses();
     Mono<Void> update(ExpenseDto expenseDto);
     Mono<Void> delete(Long id);
+    Flux<ExpenseDto> getExpensesByBudgetId(Long id);
 }
