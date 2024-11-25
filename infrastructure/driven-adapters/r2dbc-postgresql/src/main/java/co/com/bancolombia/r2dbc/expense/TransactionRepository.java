@@ -5,7 +5,7 @@ import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
 
-public interface ExpenseRepository extends ReactiveCrudRepository<ExpenseEntity, Long>, ReactiveQueryByExampleExecutor<ExpenseEntity> {
+public interface TransactionRepository extends ReactiveCrudRepository<TransactionEntity, Long>, ReactiveQueryByExampleExecutor<TransactionEntity> {
 
     Flux<TransactionDto> findByBudgetId(Long budgetId);
 }

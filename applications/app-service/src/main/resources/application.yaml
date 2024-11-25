@@ -24,5 +24,8 @@ adapters:
     port: 5432
     database: expense_tracker
     schema: public
-    username: santiagomac
-    password: santim100
+    username: santim100
+    password: santiagomac
+
+path:
+  with-id: "/transaction/{id}"

@@ -9,10 +9,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
-public class TransactionRepositoryAdapter extends ReactiveAdapterOperations<TransactionDto/* change for domain model */, ExpenseEntity/* change for adapter model */, Long, ExpenseRepository>
+public class TransactionRepositoryAdapter extends ReactiveAdapterOperations<TransactionDto/* change for domain model */, TransactionEntity/* change for adapter model */, Long, TransactionRepository>
 implements TransactionGateway
 {
-    public TransactionRepositoryAdapter(ExpenseRepository repository, ObjectMapper mapper) {
+    public TransactionRepositoryAdapter(TransactionRepository repository, ObjectMapper mapper) {
         /**
          *  Could be use mapper.mapBuilder if your domain model implement builder pattern
          *  super(repository, mapper, d -> mapper.mapBuilder(d,ObjectModel.ObjectModelBuilder.class).build());

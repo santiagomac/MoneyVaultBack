@@ -1,4 +1,4 @@
-package co.com.bancolombia.api.expense;
+package co.com.bancolombia.api.transaction;
 
 import co.com.bancolombia.model.transaction.TransactionDto;
 import co.com.bancolombia.usecase.expense.ExpenseUseCase;

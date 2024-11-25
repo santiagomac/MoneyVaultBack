@@ -1,7 +1,7 @@
 package co.com.bancolombia.api;
 
-import co.com.bancolombia.api.expense.HandlerV1;
-import co.com.bancolombia.api.expense.RouterRest;
+import co.com.bancolombia.api.transaction.HandlerV1;
+import co.com.bancolombia.api.transaction.RouterRest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
