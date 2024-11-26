@@ -1,7 +1,9 @@
-/*
 package co.com.bancolombia.api.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -9,19 +11,27 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 @Component
+@RequiredArgsConstructor
 public class SecurityHeadersConfig implements WebFilter {
+
+    private final JwtService jwtService;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-//        HttpHeaders headers = exchange.getResponse().getHeaders();
-//        headers.set("Content-Security-Policy", "default-src 'self'; frame-ancestors 'self'; form-action 'self'");
-//        headers.set("Strict-Transport-Security", "max-age=31536000;");
-//        headers.set("X-Content-Type-Options", "nosniff");
-//        headers.set("Server", "");
-//        headers.set("Cache-Control", "no-store");
-//        headers.set("Pragma", "no-cache");
-//        headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
-//        return chain.filter(exchange);
+        String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            jwtService.validateToken(token)
+                    .flatMap(username -> {
+                        SecurityContextHolder.getContext().setAuthentication(
+                                new UsernamePasswordAuthenticationToken(username, null, null)
+                        );
+
+                        return Mono.empty();
+                    });
+
+
+        }
+        return chain.filter(exchange);
     }
 }
-*/

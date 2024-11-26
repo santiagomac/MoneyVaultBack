@@ -9,13 +9,13 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 
 @Configuration
-public class RouterRest {
+public class RouterTransaction {
 
   @Value("${path.with-id}")
   private String pathWithId;
 
   @Bean
-  public RouterFunction<ServerResponse> routerFunction(HandlerV1 handlerV1) {
+  public RouterFunction<ServerResponse> transactionRouter(HandlerV1 handlerV1) {
     return RouterFunctions
         .route()
         .path("/api/v1", builder -> builder
