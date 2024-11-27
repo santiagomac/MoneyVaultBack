@@ -5,12 +5,13 @@ import co.com.bancolombia.model.transaction.gateways.TransactionGateway;
 import co.com.bancolombia.model.user.gateways.UserGateway;
 import co.com.bancolombia.usecase.budget.BudgetUseCase;
 import co.com.bancolombia.usecase.expense.ExpenseUseCase;
+import co.com.bancolombia.usecase.user.JwtGateway;
+import co.com.bancolombia.usecase.user.PasswordValidator;
 import co.com.bancolombia.usecase.user.UserUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @ComponentScan(basePackages = "co.com.bancolombia.usecase",
@@ -31,7 +32,8 @@ public class UseCasesConfig {
     }
 
     @Bean
-    public UserUseCase userUseCase(UserGateway userGateway) {
-        return new UserUseCase(userGateway);
+    public UserUseCase userUseCase(UserGateway userGateway, PasswordValidator passwordValidator,
+        JwtGateway jwtGateway) {
+        return new UserUseCase(userGateway, passwordValidator, jwtGateway);
     }
 }

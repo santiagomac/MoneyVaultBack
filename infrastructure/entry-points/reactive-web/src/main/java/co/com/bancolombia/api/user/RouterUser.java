@@ -15,7 +15,6 @@ public class RouterUser {
     public RouterFunction<ServerResponse> userRouter(Handler handler) {
         return route(
                 POST("/api/v1/auth/signup"), handler::registerUser)
-                .andRoute(POST("/api/v1/auth/signin"), handler::login)
-                .and(route(GET("/api/otherusercase/path"), handler::listenGETOtherUseCase));
+                .andRoute(POST("/api/v1/auth/signin"), handler::login);
     }
 }
