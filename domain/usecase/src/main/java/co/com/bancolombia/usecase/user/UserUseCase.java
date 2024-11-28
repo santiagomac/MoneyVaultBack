@@ -1,5 +1,6 @@
 package co.com.bancolombia.usecase.user;
 
+import co.com.bancolombia.model.jwt.JwtGateway;
 import co.com.bancolombia.model.user.UserDto;
 import co.com.bancolombia.model.user.gateways.UserGateway;
 import lombok.RequiredArgsConstructor;

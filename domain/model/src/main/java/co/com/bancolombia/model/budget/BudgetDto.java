@@ -21,4 +21,5 @@ public class BudgetDto {
     private List<TransactionDto> transactions;
     private Double totalExpenses;
     private Double totalIncomes;
+    private Long userId;
 }

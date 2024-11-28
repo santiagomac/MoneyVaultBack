@@ -1,8 +1,6 @@
-package co.com.bancolombia.r2dbc.expense;
+package co.com.bancolombia.r2dbc.transaction;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +20,6 @@ import java.time.LocalDateTime;
 public class TransactionEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private Double amount;
@@ -30,4 +27,5 @@ public class TransactionEntity {
     private LocalDateTime date;
     private Long budgetId;
     private String movementType;
+    private Long userId;
 }

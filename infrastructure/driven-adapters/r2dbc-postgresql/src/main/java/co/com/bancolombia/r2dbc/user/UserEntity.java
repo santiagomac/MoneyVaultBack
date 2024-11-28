@@ -1,8 +1,6 @@
 package co.com.bancolombia.r2dbc.user;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -26,7 +24,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UserEntity implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String email;

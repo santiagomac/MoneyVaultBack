@@ -25,4 +25,5 @@ public class TransactionDto {
     private LocalDateTime date;
     private Long budgetId;
     private String movementType;
+    private Long userId;
 }

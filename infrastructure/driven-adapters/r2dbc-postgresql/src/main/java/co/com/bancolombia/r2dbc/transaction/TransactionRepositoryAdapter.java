@@ -1,4 +1,4 @@
-package co.com.bancolombia.r2dbc.expense;
+package co.com.bancolombia.r2dbc.transaction;
 
 import co.com.bancolombia.model.transaction.TransactionDto;
 import co.com.bancolombia.model.transaction.gateways.TransactionGateway;
@@ -8,10 +8,11 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+
 @Repository
-public class TransactionRepositoryAdapter extends ReactiveAdapterOperations<TransactionDto/* change for domain model */, TransactionEntity/* change for adapter model */, Long, TransactionRepository>
-implements TransactionGateway
-{
+public class TransactionRepositoryAdapter extends ReactiveAdapterOperations<TransactionDto, TransactionEntity, Long, TransactionRepository>
+        implements TransactionGateway {
     public TransactionRepositoryAdapter(TransactionRepository repository, ObjectMapper mapper) {
         /**
          *  Could be use mapper.mapBuilder if your domain model implement builder pattern
@@ -38,7 +39,7 @@ implements TransactionGateway
 
     @Override
     public Mono<Void> update(TransactionDto transactionDto) {
-         return this.save(transactionDto).then();
+        return this.save(transactionDto).then();
     }
 
     @Override
@@ -49,5 +50,29 @@ implements TransactionGateway
     @Override
     public Flux<TransactionDto> getExpensesByBudgetId(Long id) {
         return this.repository.findByBudgetId(id);
+    }
+
+    @Override
+    public Flux<TransactionDto> filterTransactionsByLastWeek(LocalDateTime currentDate) {
+        return this.repository.filterTransactionsByLastWeek(currentDate)
+                .map(transaction -> this.mapper.map(transaction, TransactionDto.class));
+    }
+
+    @Override
+    public Flux<TransactionDto> filterTransactionsByLastMonth(LocalDateTime currentDate) {
+        return this.repository.filterTransactionsByLastMonth(currentDate)
+                .map(transaction -> this.mapper.map(transaction, TransactionDto.class));
+    }
+
+    @Override
+    public Flux<TransactionDto> filterTransactionsByLastThreeMonths(LocalDateTime currentDate) {
+        return this.repository.filterTransactionsByLastThreeMonths(currentDate)
+                .map(transaction -> this.mapper.map(transaction, TransactionDto.class));
+    }
+
+    @Override
+    public Flux<TransactionDto> filterTransactionsByCustomPeriod(LocalDateTime startDate, LocalDateTime endDate) {
+        return this.repository.filterTransactionsByCustomPeriod(startDate, endDate)
+                .map(transaction -> this.mapper.map(transaction, TransactionDto.class));
     }
 }
