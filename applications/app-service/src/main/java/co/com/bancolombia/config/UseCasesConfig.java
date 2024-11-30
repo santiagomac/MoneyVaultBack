@@ -1,12 +1,12 @@
 package co.com.bancolombia.config;
 
 import co.com.bancolombia.model.budget.gateways.BudgetGateway;
-import co.com.bancolombia.model.jwt.JwtGateway;
 import co.com.bancolombia.model.transaction.gateways.TransactionGateway;
 import co.com.bancolombia.model.user.gateways.UserGateway;
 import co.com.bancolombia.usecase.budget.BudgetUseCase;
 import co.com.bancolombia.usecase.expense.ExpenseUseCase;
 import co.com.bancolombia.usecase.filter.FilterUseCase;
+import co.com.bancolombia.usecase.user.JwtGateway;
 import co.com.bancolombia.usecase.user.PasswordValidator;
 import co.com.bancolombia.usecase.user.UserUseCase;
 import org.springframework.context.annotation.Bean;

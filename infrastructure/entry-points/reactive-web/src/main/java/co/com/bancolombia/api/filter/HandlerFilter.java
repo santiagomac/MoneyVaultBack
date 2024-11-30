@@ -14,7 +14,7 @@ public class HandlerFilter {
 
     private final FilterUseCase filterUseCase;
 
-    Mono<ServerResponse> filterPastWeek(ServerRequest request) {
+    Mono<ServerResponse> filterTransactions(ServerRequest request) {
         String period = request.queryParam("period").orElse(null);
         String startDate = request.queryParam("startDate").orElse(null);
         String endDate = request.queryParam("endDate").orElse(null);
