@@ -19,7 +19,7 @@ public class JwtProvider {
 
   private static final Logger LOGGER = Logger.getLogger(JwtProvider.class.getName());
 
-  private static final String SECRET_KEY = "YOURSECRETKEYLLENOESTOPORQUENECESITMASCARACTERESPARAQUEESTONOLLORE";
+  private static final String SECRET_KEY = "VEhJU0lTVEhFU0VDUkVUS0VZUE9SR0VORVJBVEVUSEVKV1RURU5HT1FVRUFHUkVHQVJNQVNMRVRSQVNQQVJBUVVFRlVOQ0lPTkU";
   private static final long EXPIRATION_TIME = 86400000L; // 24 hours
 
   public String generateToken(UserDto user) {
