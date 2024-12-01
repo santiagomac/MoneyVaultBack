@@ -11,7 +11,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class JwtResponse {
+public class LoginResponse {
 
+  private Integer status;
   private String token;
+  private UserResponse data;
+  private String message;
 }

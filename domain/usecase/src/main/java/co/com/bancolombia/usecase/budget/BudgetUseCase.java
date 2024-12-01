@@ -20,8 +20,8 @@ public class BudgetUseCase {
         return this.budgetGateway.createBudget(budgetDto);
     }
 
-    public Flux<BudgetDto> getAllBudgets() {
-        return this.budgetGateway.findAllBudgets()
+    public Flux<BudgetDto> getAllBudgets(Long userId) {
+        return this.budgetGateway.findAllBudgets(userId)
                 .flatMap(budget -> this.getExpensesForBudget(budget.getId())
                         .map(expenses -> calculateAndSetBudgetTotals(budget, expenses)));
     }

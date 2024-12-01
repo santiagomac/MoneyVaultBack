@@ -24,7 +24,8 @@ public class HandlerBudget {
     }
 
     public Mono<ServerResponse> getAllBudgets(ServerRequest serverRequest) {
-        return ServerResponse.ok().body(this.budgetUseCase.getAllBudgets(), BudgetDto.class);
+        Long userId = Long.parseLong(serverRequest.pathVariable("userId"));
+        return ServerResponse.ok().body(this.budgetUseCase.getAllBudgets(userId), BudgetDto.class);
     }
 
     public Mono<ServerResponse> getBudgetById(ServerRequest serverRequest) {

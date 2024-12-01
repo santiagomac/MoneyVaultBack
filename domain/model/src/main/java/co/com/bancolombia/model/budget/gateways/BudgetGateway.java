@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 public interface BudgetGateway {
 
     Mono<BudgetDto> createBudget(BudgetDto budgetDto);
-    Flux<BudgetDto> findAllBudgets();
+    Flux<BudgetDto> findAllBudgets(Long userId);
     Mono<BudgetDto> getBudgetById(Long id);
     Mono<Void> updateBudget(BudgetDto budgetDto);
     Mono<Void> deleteBudgetById(Long id);
