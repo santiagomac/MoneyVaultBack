@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15       # Imagen oficial de PostgreSQL, especifica la versión que necesitas
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: myuser  # Cambia esto por el usuario que prefieras
+      POSTGRES_PASSWORD: mypassword  # Cambia esto por una contraseña segura
+      POSTGRES_DB: mydatabase  # Cambia esto por el nombre de tu base de datos
+    ports:
+      - "5432:5432"  # Mapea el puerto local al puerto del contenedor
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistencia de datos
+    networks:
+      - postgres_network
+
+volumes:
+  postgres_data:  # Define el volumen para la persistencia
+
+networks:
+  postgres_network:  # Define la red del servicio
+    driver: bridge
