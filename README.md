@@ -1,6 +1,7 @@
 # MoneyVault (Expense tracker API)
 
-This project is based in: https://roadmap.sh/projects/expense-tracker-api:
+This project is based in roadmap projects: https://roadmap.sh/projects/expense-tracker-api.
+If you like, you can let me one star ⭐️.
 
 ## Technologies used in this project
 
