@@ -14,11 +14,11 @@ public class RouterBudget {
         return RouterFunctions
                 .route()
                 .path("/api/v1", builder -> builder
-                        .POST("/budget/createBudget", handlerBudget::createBudget)
+                        .POST("/budget", handlerBudget::createBudget)
                         .GET("/budget/{userId}", handlerBudget::getAllBudgets)
                         .GET("/budget/{id}", handlerBudget::getBudgetById)
-                        .PUT("/budget/updateBudget/{id}", handlerBudget::updateBudget)
-                        .DELETE("/budget/deleteBudget/{id}", handlerBudget::deleteBudget))
+                        .PUT("/budget/{id}", handlerBudget::updateBudget)
+                        .DELETE("/budget/{id}", handlerBudget::deleteBudget))
                 .build();
     }
 }

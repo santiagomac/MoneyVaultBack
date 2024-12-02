@@ -17,7 +17,7 @@ public class HandlerV1 {
     private final ExpenseUseCase expenseUseCase;
 //private  final UseCase2 useCase2;
 
-    public Mono<ServerResponse> createExpense(ServerRequest serverRequest) {
+    public Mono<ServerResponse> createTransaction(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(TransactionDto.class)
                 .flatMap(this.expenseUseCase::createExpense)
                 .flatMap(expense -> ServerResponse.ok().bodyValue(expense))

@@ -20,7 +20,7 @@ public class RouterTransaction {
         .route()
         .path("/api/v1", builder -> builder
             .GET(pathWithId, handlerV1::getExpense)
-            .POST("/transaction/createExpense", handlerV1::createExpense)
+            .POST("/transaction", handlerV1::createTransaction)
             .GET("/transaction", handlerV1::getExpenses)
             .PUT(pathWithId, handlerV1::updateExpense)
             .DELETE(pathWithId, handlerV1::deleteExpense)
