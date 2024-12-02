@@ -19,9 +19,9 @@ public class RouterTransaction {
     return RouterFunctions
         .route()
         .path("/api/v1", builder -> builder
-            .GET(pathWithId, handlerV1::getExpense)
+            .GET(pathWithId.concat("/{userId}"), handlerV1::getExpense)
             .POST("/transaction", handlerV1::createTransaction)
-            .GET("/transaction", handlerV1::getExpenses)
+            .GET("/transaction/{userId}", handlerV1::getExpenses)
             .PUT(pathWithId, handlerV1::updateExpense)
             .DELETE(pathWithId, handlerV1::deleteExpense)
         ).build();

@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 public interface TransactionGateway {
 
     Mono<TransactionDto> create(TransactionDto transactionDto);
-    Mono<TransactionDto> getById(Long id);
-    Flux<TransactionDto> getAllExpenses();
+    Mono<TransactionDto> getById(Long id, Long userId);
+    Flux<TransactionDto> getAllExpenses(Long userId);
     Mono<Void> update(TransactionDto transactionDto);
     Mono<Void> delete(Long id);
     Flux<TransactionDto> getExpensesByBudgetId(Long id);

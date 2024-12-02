@@ -15,16 +15,16 @@ public class ExpenseUseCase {
         return this.transactionGateway.create(transactionDto);
     }
 
-    public Flux<TransactionDto> getAllExpenses() {
-        return transactionGateway.getAllExpenses();
+    public Flux<TransactionDto> getAllExpenses(Long userId) {
+        return transactionGateway.getAllExpenses(userId);
     }
 
     public Flux<TransactionDto> getExpensesByBudgetId(Long budgetId) {
         return this.transactionGateway.getExpensesByBudgetId(budgetId);
     }
 
-    public Mono<TransactionDto> getExpense(Long id) {
-        return this.transactionGateway.getById(id);
+    public Mono<TransactionDto> getExpense(Long id, Long userId) {
+        return this.transactionGateway.getById(id, userId);
     }
 
     public Mono<Void> updateExpense(Long id, TransactionDto transactionDto) {

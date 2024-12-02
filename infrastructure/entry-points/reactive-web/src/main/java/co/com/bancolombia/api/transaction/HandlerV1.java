@@ -25,14 +25,16 @@ public class HandlerV1 {
     }
 
     public Mono<ServerResponse> getExpenses(ServerRequest serverRequest) {
-        return ServerResponse.ok().body(this.expenseUseCase.getAllExpenses(), TransactionDto.class);
+        Long userId = Long.parseLong(serverRequest.pathVariable("userId"));
+        return ServerResponse.ok().body(this.expenseUseCase.getAllExpenses(userId), TransactionDto.class);
     }
 
     public Mono<ServerResponse> getExpense(ServerRequest serverRequest) {
         try {
             Long id = Long.parseLong(serverRequest.pathVariable("id"));
+            Long userId = Long.parseLong(serverRequest.pathVariable("userId"));
             log.info("Getting expense with id: {}", id);
-            return this.expenseUseCase.getExpense(id)
+            return this.expenseUseCase.getExpense(id, userId)
                     .flatMap(expense -> ServerResponse.ok().bodyValue(expense));
         } catch (NumberFormatException ex) {
             return ServerResponse.badRequest().bodyValue("Invalid ID: must be a number");

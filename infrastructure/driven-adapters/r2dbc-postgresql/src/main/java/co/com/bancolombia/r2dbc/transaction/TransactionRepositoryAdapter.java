@@ -28,13 +28,13 @@ public class TransactionRepositoryAdapter extends ReactiveAdapterOperations<Tran
     }
 
     @Override
-    public Mono<TransactionDto> getById(Long id) {
-        return this.findById(id);
+    public Mono<TransactionDto> getById(Long id, Long userId) {
+        return this.repository.findByIdAndUserId(id, userId);
     }
 
     @Override
-    public Flux<TransactionDto> getAllExpenses() {
-        return this.findAll();
+    public Flux<TransactionDto> getAllExpenses(Long userId) {
+        return this.repository.findByUserId(userId);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class RouterBudget {
                 .path("/api/v1", builder -> builder
                         .POST("/budget", handlerBudget::createBudget)
                         .GET("/budget/{userId}", handlerBudget::getAllBudgets)
-                        .GET("/budget/{id}", handlerBudget::getBudgetById)
+                        .GET("/budget/getById/{id}", handlerBudget::getBudgetById)
                         .PUT("/budget/{id}", handlerBudget::updateBudget)
                         .DELETE("/budget/{id}", handlerBudget::deleteBudget))
                 .build();

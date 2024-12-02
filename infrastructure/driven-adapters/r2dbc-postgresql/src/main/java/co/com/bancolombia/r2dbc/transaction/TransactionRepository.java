@@ -6,12 +6,15 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 
 public interface TransactionRepository extends ReactiveCrudRepository<TransactionEntity, Long>, ReactiveQueryByExampleExecutor<TransactionEntity> {
 
     Flux<TransactionDto> findByBudgetId(Long budgetId);
+    Flux<TransactionDto> findByUserId(Long userId);
+    Mono<TransactionDto> findByIdAndUserId(Long id, Long userId);
 
     @Query("SELECT * FROM transactions WHERE date >= :currentDate::DATE - INTERVAL '7 days'")
     Flux<TransactionEntity> filterTransactionsByLastWeek(@Param("currentDate") LocalDateTime currentDate);
