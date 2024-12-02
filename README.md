@@ -9,6 +9,7 @@ If you like, you can let me one star ⭐️.
 ![Spring Security](https://img.shields.io/badge/spring%20security-%236DB33F.svg?style=for-the-badge&logo=springsecurity&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+
 ## Steps to run the project:
 
 Follow the next steps to run the project and use it.
@@ -27,7 +28,8 @@ Follow the next steps to run the project and use it.
     ```
    docker-compose up -d
     ```
-4. Run the project and consume the endpoints. (Postman recommended).
+4. Run the script to create the tables in the database, in the folder scripts.
+5. Run the project and consume the endpoints. (Postman recommended).
 
 ### Note
 To create one transaction (income, expense) is needed to create one budget.
