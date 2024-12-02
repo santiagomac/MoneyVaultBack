@@ -5,10 +5,10 @@ If you like, you can let me one star ⭐️.
 
 ## Technologies used in this project
 
-- **API** - Spring Webflux.
-- **Authentication** - Spring security.
-- **Database** - Postgresql.
-
+![Spring Boot](https://img.shields.io/badge/spring%20webflux-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Spring Security](https://img.shields.io/badge/spring%20security-%236DB33F.svg?style=for-the-badge&logo=springsecurity&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ## Steps to run the project:
 
 Follow the next steps to run the project and use it.
@@ -58,7 +58,7 @@ To create one transaction (income, expense) is needed to create one budget.
   * Last three months
   * Custom: *Start date* - *End date*
 
-### Caategories:
+### Categories:
 * Groceries
 * Leisure
 * Electronics
