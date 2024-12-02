@@ -1,3 +1,12 @@
+create table public.users
+(
+    id       serial
+        primary key,
+    email    varchar default ''::character varying not null,
+    password varchar default ''::character varying not null,
+    username varchar default ''::character varying not null
+);
+
 create table public.transactions
 (
     id            serial primary key,
@@ -20,9 +29,3 @@ create table public.budgets
     user_id integer,
     foreign key (user_id) references users(id)
 );
-
-alter table public.budgets
-    owner to santim100;
-
-alter table public.transactions
-    owner to santim100;
