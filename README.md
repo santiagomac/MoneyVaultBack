@@ -1,5 +1,13 @@
 # MoneyVault (Expense tracker API)
 
+This project is based in: https://roadmap.sh/projects/expense-tracker-api:
+
+## Technologies used in this project
+
+- **API** - Spring Webflux.
+- **Authentication** - Spring security.
+- **Database** - Postgresql.
+
 ## Steps to run the project:
 
 Follow the next steps to run the project and use it.
@@ -23,18 +31,39 @@ Follow the next steps to run the project and use it.
 ### Note
 To create one transaction (income, expense) is needed to create one budget.
 
-## Endpoints supported:
+## Features:
 
-This is a list with the endpoints supported by the API:
+### Authentication of the users.
 
-1. Create one budget.
-2. Get all budgets by user.
-3. Get budget by id.
-4. Get transactions by user.
-5. Get transaction by id.
-6. Update the transaction.
-7. Delete transaction.
-8. Sign up. (Create user)
-9. Sign in. (Generate JWT)
+* **Sign up**: Register one user by email and password.
+* **Sign in**: Login by email and password, and generate the JWT.
+
+### Track your expenses
+
+* **Budget:**
+  * Create one budget, this is required for created one transaction.
+  * Get all budgets by user id.
+  * Get one budget by user id.
+  * Update the budget.
+  * Delete the budget.
+* **Transaction:**
+  * Create one transaction.
+  * Get all transactions by user id.
+  * Get one transaction by user id.
+  * Update and delete transaction.
+* **Filter transactions:**
+  * Past week
+  * Past month
+  * Last three months
+  * Custom: *Start date* - *End date*
+
+### Caategories:
+* Groceries
+* Leisure
+* Electronics
+* Utilities
+* Clothing
+* Health
+* Others
 
 The swagger documentation is in building. 🛠️
